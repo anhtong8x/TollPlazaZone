@@ -1,0 +1,1527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TS_CENTERModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="center_archives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="station_id" Type="tinyint" />
+          <Property Name="lance_id" Type="varchar" MaxLength="10" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="session_id" Type="tinyint" />
+          <Property Name="error_id" Type="tinyint" />
+          <Property Name="lpn" Type="varchar" MaxLength="50" />
+          <Property Name="barcode" Type="varchar" MaxLength="50" />
+          <Property Name="barcode_type" Type="tinyint" />
+          <Property Name="plateimage_filename" Type="nvarchar" MaxLength="255" />
+          <Property Name="fullimage_filename" Type="nvarchar" MaxLength="255" />
+          <Property Name="classify_type" Type="tinyint" />
+          <Property Name="ticket_value" Type="money" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" />
+          <Property Name="start_boarding_time" Type="datetime" />
+          <Property Name="end_boarding_time" Type="datetime" />
+          <Property Name="loading_capacity" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="last_update_time" Type="datetime" />
+          <Property Name="last_update_userID" Type="smallint" />
+          <Property Name="observer_id" Type="smallint" />
+          <Property Name="history" Type="nvarchar" MaxLength="1000" />
+          <Property Name="approved_id" Type="smallint" />
+          <Property Name="checked" Type="bit" />
+        </EntityType>
+        <EntityType Name="center_archives_manual">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="tinyint" />
+          <Property Name="lance_id" Type="varchar" MaxLength="10" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="session_id" Type="tinyint" />
+          <Property Name="start_boarding_time" Type="datetime" />
+          <Property Name="end_boarding_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="center_employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uname" Type="char" MaxLength="30" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+          <Property Name="user_barcode" Type="varchar" MaxLength="30" />
+          <Property Name="image_text" Type="nvarchar" MaxLength="255" />
+          <Property Name="displayname" Type="nvarchar" MaxLength="50" />
+          <Property Name="isAdmin" Type="bit" />
+          <Property Name="isCabin" Type="bit" />
+          <Property Name="isSupervisor" Type="bit" />
+          <Property Name="isAccountant" Type="bit" />
+          <Property Name="isLeader" Type="bit" />
+          <Property Name="isElectric" Type="bit" />
+          <Property Name="status" Type="bit" />
+          <Property Name="isCashier" Type="bit" />
+          <Property Name="isLaneDivision" Type="bit" />
+          <Property Name="isOfficeWork" Type="bit" />
+          <Property Name="isDirector" Type="bit" />
+        </EntityType>
+        <EntityType Name="center_lane">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="lane_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="lane_width" Type="float" />
+          <Property Name="lane_height" Type="float" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="center_operation_error">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="error_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="descreption" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="center_plate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lpn" Type="char" MaxLength="15" />
+          <Property Name="classify_type" Type="tinyint" />
+          <Property Name="ticket_value" Type="money" />
+          <Property Name="fullimage_filename" Type="char" MaxLength="255" />
+          <Property Name="plateimage_filename" Type="char" MaxLength="255" />
+          <Property Name="isPriority" Type="bit" />
+          <Property Name="barcode" Type="varchar(max)" />
+          <Property Name="classify_profile" Type="nvarchar" MaxLength="1000" />
+          <Property Name="owner" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="250" />
+          <Property Name="registration_date" Type="datetime" />
+          <Property Name="registration_number" Type="varchar" MaxLength="50" />
+          <Property Name="loading_capacity" Type="int" />
+          <Property Name="seat_capacity" Type="int" />
+          <Property Name="validity_start_date" Type="datetime" />
+          <Property Name="validity_end_date" Type="datetime" />
+          <Property Name="ticket_type" Type="nvarchar" MaxLength="15" />
+          <Property Name="is_violation" Type="bit" />
+          <Property Name="note" Type="nvarchar" MaxLength="500" />
+          <Property Name="status" Type="tinyint" />
+          <Property Name="is_display" Type="bit" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="userid" Type="tinyint" />
+          <Property Name="approver_id" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="center_plate_Update_History">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lpn" Type="varchar" MaxLength="15" />
+          <Property Name="oldClassifyType" Type="int" />
+          <Property Name="newClassifyType" Type="int" />
+          <Property Name="userId" Type="int" />
+          <Property Name="userFullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="createDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="center_review_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="center_archives_id" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="lpn" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="center_staff_error">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="staff_id" Type="smallint" />
+          <Property Name="error_name" Type="nvarchar" MaxLength="250" />
+          <Property Name="date_work" Type="datetime" />
+          <Property Name="session_id" Type="int" />
+          <Property Name="error_id" Type="int" />
+          <Property Name="penalty" Type="money" />
+          <Property Name="abundant" Type="money" />
+          <Property Name="center_archives_id" Type="int" />
+          <Property Name="lpn" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="center_station">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="station_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="barcode_prefix" Type="nvarchar" MaxLength="50" />
+          <Property Name="ticketone" Type="int" />
+          <Property Name="ticketmonth" Type="int" />
+          <Property Name="ticketquarter" Type="int" />
+          <Property Name="ticketturnhighway" Type="int" />
+          <Property Name="ticketprioritygroup" Type="int" />
+          <Property Name="ticketmember" Type="int" />
+          <Property Name="created_by" Type="tinyint" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="hederReport" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ticketnation" Type="int" />
+          <Property Name="ticketperiod" Type="int" />
+          <Property Name="ticketprioritysingle" Type="int" />
+        </EntityType>
+        <EntityType Name="center_ticket_cancel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ticket_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ticket_serie" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="start_number_serie" Type="int" Nullable="false" />
+          <Property Name="end_number_serie" Type="int" Nullable="false" />
+          <Property Name="date_cancel" Type="datetime" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="from_staff_fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="from_staff" Type="int" />
+          <Property Name="cancel_user_fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="cancel_user" Type="int" />
+          <Property Name="reasons" Type="nvarchar" MaxLength="100" />
+          <Property Name="is_sales" Type="bit" />
+          <Property Name="money" Type="money" />
+          <Property Name="sell_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="center_ticket_delivery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="delivery_date" Type="datetime" />
+          <Property Name="deliveryer_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="deliveryer" Type="int" />
+          <Property Name="receiver_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="receiver" Type="int" />
+          <Property Name="ticket_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="startSerie" Type="int" />
+          <Property Name="endSerie" Type="int" />
+          <Property Name="ticketSerie" Type="nchar" MaxLength="10" />
+          <Property Name="session_id" Type="int" />
+        </EntityType>
+        <EntityType Name="center_ticket_delivery_Copy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="delivery_date" Type="datetime" />
+          <Property Name="deliveryer_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="deliveryer" Type="int" />
+          <Property Name="receiver_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="receiver" Type="int" />
+          <Property Name="ticket_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="startSerie" Type="int" />
+          <Property Name="endSerie" Type="int" />
+          <Property Name="ticketSerie" Type="nchar" MaxLength="10" />
+          <Property Name="session_id" Type="int" />
+        </EntityType>
+        <EntityType Name="center_ticket_prepay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lpn" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="classify_type" Type="tinyint" Nullable="false" />
+          <Property Name="ticket_type" Type="tinyint" Nullable="false" />
+          <Property Name="ticket_value" Type="money" />
+          <Property Name="barcode" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="classify_owner" Type="nvarchar" MaxLength="50" />
+          <Property Name="validity_start_date" Type="datetime" />
+          <Property Name="validity_end_date" Type="datetime" />
+          <Property Name="accounting_staffid" Type="tinyint" />
+          <Property Name="payment" Type="nvarchar" MaxLength="50" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="update_history" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="center_ticket_restore">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ticket_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ticket_serie" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="start_number_serie" Type="int" Nullable="false" />
+          <Property Name="end_number_serie" Type="int" Nullable="false" />
+          <Property Name="date_store" Type="datetime" />
+          <Property Name="outForSale" Type="bit" />
+          <Property Name="date_out" Type="datetime" />
+          <Property Name="fromStaff" Type="int" />
+          <Property Name="fromStaff_fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountantName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="center_ticket_serie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ticket_serie" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="start_number_serie" Type="int" Nullable="false" />
+          <Property Name="end_number_serie" Type="int" Nullable="false" />
+          <Property Name="staff_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="center_ticket_store">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ticket_serie" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="ticket_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="start_number_serie" Type="int" Nullable="false" />
+          <Property Name="end_number_serie" Type="int" Nullable="false" />
+          <Property Name="date_store" Type="datetime" />
+          <Property Name="outForSale" Type="bit" />
+          <Property Name="date_out" Type="datetime" />
+          <Property Name="quantity" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="book_number" Type="numeric" Precision="13" Scale="2" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="center_ticket_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ticket_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ticket_value" Type="money" Nullable="false" />
+          <Property Name="ticket_type" Type="tinyint" />
+          <Property Name="classify_type" Type="tinyint" Nullable="false" />
+          <Property Name="payment" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descriptions" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="etc_archives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="station_id" Type="tinyint" />
+          <Property Name="lane_id" Type="varchar" MaxLength="10" />
+          <Property Name="user_id" Type="smallint" />
+          <Property Name="lpn" Type="varchar" MaxLength="10" />
+          <Property Name="plate_type" Type="tinyint" />
+          <Property Name="transaction_type" Type="tinyint" />
+          <Property Name="lpn_image" Type="nvarchar" MaxLength="255" />
+          <Property Name="overview_image" Type="nvarchar" MaxLength="255" />
+          <Property Name="vehicle_type" Type="tinyint" />
+          <Property Name="ticket_value" Type="money" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" />
+          <Property Name="start_boarding_time" Type="datetime" />
+          <Property Name="end_boarding_time" Type="datetime" />
+          <Property Name="TransactionId" Type="int" />
+          <Property Name="revised" Type="bit" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ETCMark">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="etcArchivesId" Type="int" Nullable="false" />
+          <Property Name="descript" Type="nvarchar(max)" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="sessionId" Type="int" />
+          <Property Name="lpn" Type="varchar" MaxLength="10" />
+          <Property Name="MTCVehicleType" Type="nvarchar" MaxLength="15" />
+          <Property Name="ETCVehicleType" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="station_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="log_type" Type="tinyint" />
+          <Property Name="log_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="action" Type="tinyint" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="created_user" Type="smallint" />
+        </EntityType>
+        <EntityType Name="station_paramater">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="station_id" Type="tinyint" />
+          <Property Name="lane_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="session_current" Type="int" />
+          <Property Name="time_scan_status" Type="int" />
+          <Property Name="com_plc" Type="nvarchar" MaxLength="50" />
+          <Property Name="veconvis_use" Type="int" />
+          <Property Name="camera_lpn_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="camera_lpn_port" Type="int" />
+          <Property Name="veconvis_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="veconvis_laneid" Type="nvarchar" MaxLength="50" />
+          <Property Name="veconvis_lane_index" Type="int" />
+          <Property Name="veconvis_lpn_index" Type="int" />
+          <Property Name="veconvis_image_index" Type="int" />
+          <Property Name="veconvis_lpn_path" Type="nvarchar" MaxLength="250" />
+          <Property Name="server_lpn_path" Type="nvarchar" MaxLength="250" />
+          <Property Name="dictionary_lpn_path" Type="nvarchar" MaxLength="250" />
+          <Property Name="camera_lane_use" Type="int" />
+          <Property Name="camera_lane_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="camera_lane_port" Type="int" />
+          <Property Name="camera_lane_user" Type="nvarchar" MaxLength="50" />
+          <Property Name="camera_lane_pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="camera_lane_status" Type="int" />
+          <Property Name="server_lane_path" Type="nvarchar" MaxLength="250" />
+          <Property Name="dictionary_lane_path" Type="nvarchar" MaxLength="250" />
+          <Property Name="board_mesage_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="board_mesage_port" Type="int" />
+          <Property Name="board_mesage_user" Type="nvarchar" MaxLength="50" />
+          <Property Name="board_mesage_pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="etc_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="etc_user" Type="nvarchar" MaxLength="50" />
+          <Property Name="etc_pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="etc_port_command" Type="int" />
+          <Property Name="etc_port_status" Type="int" />
+          <Property Name="win_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="win_led_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="win_user" Type="nvarchar" MaxLength="50" />
+          <Property Name="win_pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="win_port" Type="int" />
+          <Property Name="wim_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="wim_port" Type="int" />
+          <Property Name="created_by" Type="tinyint" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="server_lpn_path_backup" Type="nvarchar" MaxLength="50" />
+          <Property Name="server_lane_path_backup" Type="nvarchar" MaxLength="50" />
+          <Property Name="dictionary_lpn_path_backup" Type="nvarchar" MaxLength="50" />
+          <Property Name="dictionary_lane_path_backup" Type="nvarchar" MaxLength="50" />
+          <Property Name="led_com_port" Type="nchar" MaxLength="10" />
+          <Property Name="server_user" Type="nchar" MaxLength="50" />
+          <Property Name="server_pass" Type="nchar" MaxLength="50" />
+          <Property Name="server_drive" Type="nchar" MaxLength="2" />
+          <Property Name="backup_server_user" Type="nchar" MaxLength="50" />
+          <Property Name="backup_server_pass" Type="nchar" MaxLength="50" />
+          <Property Name="backup_server_drive" Type="nchar" MaxLength="2" />
+          <Property Name="recog_user" Type="nchar" MaxLength="50" />
+          <Property Name="recog_pass" Type="nchar" MaxLength="50" />
+          <Property Name="recog_drive" Type="nchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="station_session">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="session_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="session_start_time" Type="datetime" Nullable="false" />
+          <Property Name="session_end_time" Type="datetime" Nullable="false" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="session_order" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="store_endofsession">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="staff" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ticket_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="quantity_before" Type="int" Nullable="false" />
+          <Property Name="quantity_sale" Type="int" Nullable="false" />
+          <Property Name="quantity_after" Type="int" Nullable="false" />
+          <Property Name="series_after" Type="varchar(max)" />
+          <Property Name="date_work" Type="datetime" Nullable="false" />
+          <Property Name="session_work" Type="int" Nullable="false" />
+          <Property Name="staff_id" Type="smallint" Nullable="false" />
+          <Property Name="quantity_getin" Type="int" />
+          <Property Name="money" Type="money" />
+          <Property Name="real_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="store_endofsession_money">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="staff" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="money_before" Type="int" Nullable="false" />
+          <Property Name="money_after" Type="int" Nullable="false" />
+          <Property Name="date_work" Type="datetime" Nullable="false" />
+          <Property Name="session_work" Type="int" Nullable="false" />
+          <Property Name="staff_id" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TS_CENTER.dbo.ticket_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ticket_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ticket_name" Type="nvarchar(max)" />
+          <Property Name="ticketID" Type="varchar" MaxLength="15" />
+          <Property Name="ticket_type" Type="tinyint" />
+          <Property Name="vehicle_type" Type="tinyint" />
+          <Property Name="ticket_value" Type="money" />
+          <Property Name="validate_start" Type="datetime" />
+          <Property Name="validate_end" Type="datetime" />
+          <Property Name="note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="TS_CENTERModelStoreContainer">
+          <EntitySet Name="center_archives" EntityType="Self.center_archives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_archives_manual" EntityType="Self.center_archives_manual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_employee" EntityType="Self.center_employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_lane" EntityType="Self.center_lane" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_operation_error" EntityType="Self.center_operation_error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_plate" EntityType="Self.center_plate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_plate_Update_History" EntityType="Self.center_plate_Update_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_review_history" EntityType="Self.center_review_history" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_staff_error" EntityType="Self.center_staff_error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_station" EntityType="Self.center_station" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_ticket_cancel" EntityType="Self.center_ticket_cancel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_ticket_delivery" EntityType="Self.center_ticket_delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_ticket_delivery_Copy" EntityType="Self.center_ticket_delivery_Copy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_ticket_prepay" EntityType="Self.center_ticket_prepay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_ticket_restore" EntityType="Self.center_ticket_restore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_ticket_serie" EntityType="Self.center_ticket_serie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_ticket_store" EntityType="Self.center_ticket_store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="center_ticket_type" EntityType="Self.center_ticket_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="etc_archives" EntityType="Self.etc_archives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ETCMark" EntityType="Self.ETCMark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="station_log" EntityType="Self.station_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="station_paramater" EntityType="Self.station_paramater" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="station_session" EntityType="Self.station_session" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="store_endofsession" EntityType="Self.store_endofsession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="store_endofsession_money" EntityType="Self.store_endofsession_money" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ticket_history" EntityType="Self.ticket_history" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ticket_history].[id] AS [id], 
+    [ticket_history].[ticket_name] AS [ticket_name], 
+    [ticket_history].[ticketID] AS [ticketID], 
+    [ticket_history].[ticket_type] AS [ticket_type], 
+    [ticket_history].[vehicle_type] AS [vehicle_type], 
+    [ticket_history].[ticket_value] AS [ticket_value], 
+    [ticket_history].[validate_start] AS [validate_start], 
+    [ticket_history].[validate_end] AS [validate_end], 
+    [ticket_history].[note] AS [note]
+    FROM [dbo].[ticket_history] AS [ticket_history]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TS_CENTERModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="center_archives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="station_id" Type="Byte" />
+          <Property Name="lance_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="session_id" Type="Byte" />
+          <Property Name="error_id" Type="Byte" />
+          <Property Name="lpn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="barcode_type" Type="Byte" />
+          <Property Name="plateimage_filename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fullimage_filename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="classify_type" Type="Byte" />
+          <Property Name="ticket_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="start_boarding_time" Type="DateTime" Precision="3" />
+          <Property Name="end_boarding_time" Type="DateTime" Precision="3" />
+          <Property Name="loading_capacity" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="last_update_time" Type="DateTime" Precision="3" />
+          <Property Name="last_update_userID" Type="Int16" />
+          <Property Name="observer_id" Type="Int16" />
+          <Property Name="history" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="approved_id" Type="Int16" />
+          <Property Name="checked" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="center_archives_manual">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="Byte" />
+          <Property Name="lance_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="session_id" Type="Byte" />
+          <Property Name="start_boarding_time" Type="DateTime" Precision="3" />
+          <Property Name="end_boarding_time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="center_employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uname" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_barcode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="image_text" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="displayname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isAdmin" Type="Boolean" />
+          <Property Name="isCabin" Type="Boolean" />
+          <Property Name="isSupervisor" Type="Boolean" />
+          <Property Name="isAccountant" Type="Boolean" />
+          <Property Name="isLeader" Type="Boolean" />
+          <Property Name="isElectric" Type="Boolean" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="isCashier" Type="Boolean" />
+          <Property Name="isLaneDivision" Type="Boolean" />
+          <Property Name="isOfficeWork" Type="Boolean" />
+          <Property Name="isDirector" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="center_lane">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="lane_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lane_width" Type="Double" />
+          <Property Name="lane_height" Type="Double" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="center_operation_error">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="error_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descreption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="center_plate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lpn" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="classify_type" Type="Byte" />
+          <Property Name="ticket_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="fullimage_filename" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="plateimage_filename" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="isPriority" Type="Boolean" />
+          <Property Name="barcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="classify_profile" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="owner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="registration_date" Type="DateTime" Precision="3" />
+          <Property Name="registration_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loading_capacity" Type="Int32" />
+          <Property Name="seat_capacity" Type="Int32" />
+          <Property Name="validity_start_date" Type="DateTime" Precision="3" />
+          <Property Name="validity_end_date" Type="DateTime" Precision="3" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="is_violation" Type="Boolean" />
+          <Property Name="note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Byte" />
+          <Property Name="is_display" Type="Boolean" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="userid" Type="Byte" />
+          <Property Name="approver_id" Type="Byte" />
+        </EntityType>
+        <EntityType Name="center_plate_Update_History">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lpn" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="oldClassifyType" Type="Int32" />
+          <Property Name="newClassifyType" Type="Int32" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="userFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="center_review_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="center_archives_id" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="lpn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="center_staff_error">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="staff_id" Type="Int16" />
+          <Property Name="error_name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="date_work" Type="DateTime" Precision="3" />
+          <Property Name="session_id" Type="Int32" />
+          <Property Name="error_id" Type="Int32" />
+          <Property Name="penalty" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="abundant" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="center_archives_id" Type="Int32" />
+          <Property Name="lpn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="center_station">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="station_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="barcode_prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ticketone" Type="Int32" />
+          <Property Name="ticketmonth" Type="Int32" />
+          <Property Name="ticketquarter" Type="Int32" />
+          <Property Name="ticketturnhighway" Type="Int32" />
+          <Property Name="ticketprioritygroup" Type="Int32" />
+          <Property Name="ticketmember" Type="Int32" />
+          <Property Name="created_by" Type="Byte" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="hederReport" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ticketnation" Type="Int32" />
+          <Property Name="ticketperiod" Type="Int32" />
+          <Property Name="ticketprioritysingle" Type="Int32" />
+        </EntityType>
+        <EntityType Name="center_ticket_cancel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticket_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ticket_serie" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="start_number_serie" Type="Int32" Nullable="false" />
+          <Property Name="end_number_serie" Type="Int32" Nullable="false" />
+          <Property Name="date_cancel" Type="DateTime" Precision="3" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="from_staff_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="from_staff" Type="Int32" />
+          <Property Name="cancel_user_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cancel_user" Type="Int32" />
+          <Property Name="reasons" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="is_sales" Type="Boolean" />
+          <Property Name="money" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sell_time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="center_ticket_delivery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="delivery_date" Type="DateTime" Precision="3" />
+          <Property Name="deliveryer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="deliveryer" Type="Int32" />
+          <Property Name="receiver_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="receiver" Type="Int32" />
+          <Property Name="ticket_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="startSerie" Type="Int32" />
+          <Property Name="endSerie" Type="Int32" />
+          <Property Name="ticketSerie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="session_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="center_ticket_delivery_Copy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="delivery_date" Type="DateTime" Precision="3" />
+          <Property Name="deliveryer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="deliveryer" Type="Int32" />
+          <Property Name="receiver_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="receiver" Type="Int32" />
+          <Property Name="ticket_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="startSerie" Type="Int32" />
+          <Property Name="endSerie" Type="Int32" />
+          <Property Name="ticketSerie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="session_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="center_ticket_prepay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lpn" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="classify_type" Type="Byte" Nullable="false" />
+          <Property Name="ticket_type" Type="Byte" Nullable="false" />
+          <Property Name="ticket_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="barcode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="classify_owner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="validity_start_date" Type="DateTime" Precision="3" />
+          <Property Name="validity_end_date" Type="DateTime" Precision="3" />
+          <Property Name="accounting_staffid" Type="Byte" />
+          <Property Name="payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="update_history" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="center_ticket_restore">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticket_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ticket_serie" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="start_number_serie" Type="Int32" Nullable="false" />
+          <Property Name="end_number_serie" Type="Int32" Nullable="false" />
+          <Property Name="date_store" Type="DateTime" Precision="3" />
+          <Property Name="outForSale" Type="Boolean" />
+          <Property Name="date_out" Type="DateTime" Precision="3" />
+          <Property Name="fromStaff" Type="Int32" />
+          <Property Name="fromStaff_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="center_ticket_serie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ticket_serie" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="start_number_serie" Type="Int32" Nullable="false" />
+          <Property Name="end_number_serie" Type="Int32" Nullable="false" />
+          <Property Name="staff_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="center_ticket_store">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticket_serie" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ticket_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="start_number_serie" Type="Int32" Nullable="false" />
+          <Property Name="end_number_serie" Type="Int32" Nullable="false" />
+          <Property Name="date_store" Type="DateTime" Precision="3" />
+          <Property Name="outForSale" Type="Boolean" />
+          <Property Name="date_out" Type="DateTime" Precision="3" />
+          <Property Name="quantity" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="book_number" Type="Decimal" Precision="13" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="center_ticket_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ticket_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ticket_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ticket_type" Type="Byte" />
+          <Property Name="classify_type" Type="Byte" Nullable="false" />
+          <Property Name="payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descriptions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="etc_archives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="station_id" Type="Byte" />
+          <Property Name="lane_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int16" />
+          <Property Name="lpn" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="plate_type" Type="Byte" />
+          <Property Name="transaction_type" Type="Byte" />
+          <Property Name="lpn_image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="overview_image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vehicle_type" Type="Byte" />
+          <Property Name="ticket_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="start_boarding_time" Type="DateTime" Precision="3" />
+          <Property Name="end_boarding_time" Type="DateTime" Precision="3" />
+          <Property Name="TransactionId" Type="Int32" />
+          <Property Name="revised" Type="Boolean" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ETCMark">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="etcArchivesId" Type="Int32" Nullable="false" />
+          <Property Name="descript" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="sessionId" Type="Int32" />
+          <Property Name="lpn" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MTCVehicleType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ETCVehicleType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="station_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="log_type" Type="Byte" />
+          <Property Name="log_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="action" Type="Byte" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="created_user" Type="Int16" />
+        </EntityType>
+        <EntityType Name="station_paramater">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="station_id" Type="Byte" />
+          <Property Name="lane_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="session_current" Type="Int32" />
+          <Property Name="time_scan_status" Type="Int32" />
+          <Property Name="com_plc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="veconvis_use" Type="Int32" />
+          <Property Name="camera_lpn_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="camera_lpn_port" Type="Int32" />
+          <Property Name="veconvis_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="veconvis_laneid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="veconvis_lane_index" Type="Int32" />
+          <Property Name="veconvis_lpn_index" Type="Int32" />
+          <Property Name="veconvis_image_index" Type="Int32" />
+          <Property Name="veconvis_lpn_path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="server_lpn_path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="dictionary_lpn_path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="camera_lane_use" Type="Int32" />
+          <Property Name="camera_lane_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="camera_lane_port" Type="Int32" />
+          <Property Name="camera_lane_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="camera_lane_pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="camera_lane_status" Type="Int32" />
+          <Property Name="server_lane_path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="dictionary_lane_path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="board_mesage_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="board_mesage_port" Type="Int32" />
+          <Property Name="board_mesage_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="board_mesage_pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="etc_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="etc_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="etc_pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="etc_port_command" Type="Int32" />
+          <Property Name="etc_port_status" Type="Int32" />
+          <Property Name="win_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="win_led_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="win_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="win_pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="win_port" Type="Int32" />
+          <Property Name="wim_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="wim_port" Type="Int32" />
+          <Property Name="created_by" Type="Byte" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="server_lpn_path_backup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="server_lane_path_backup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dictionary_lpn_path_backup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dictionary_lane_path_backup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="led_com_port" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="server_user" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="server_pass" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="server_drive" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="backup_server_user" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="backup_server_pass" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="backup_server_drive" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="recog_user" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="recog_pass" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="recog_drive" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="station_session">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="session_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="session_start_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="session_end_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="session_order" Type="Byte" />
+        </EntityType>
+        <EntityType Name="store_endofsession">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="staff" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ticket_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantity_before" Type="Int32" Nullable="false" />
+          <Property Name="quantity_sale" Type="Int32" Nullable="false" />
+          <Property Name="quantity_after" Type="Int32" Nullable="false" />
+          <Property Name="series_after" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date_work" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="session_work" Type="Int32" Nullable="false" />
+          <Property Name="staff_id" Type="Int16" Nullable="false" />
+          <Property Name="quantity_getin" Type="Int32" />
+          <Property Name="money" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="real_time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="store_endofsession_money">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="staff" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="money_before" Type="Int32" Nullable="false" />
+          <Property Name="money_after" Type="Int32" Nullable="false" />
+          <Property Name="date_work" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="session_work" Type="Int32" Nullable="false" />
+          <Property Name="staff_id" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ticket_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticket_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ticketID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ticket_type" Type="Byte" />
+          <Property Name="vehicle_type" Type="Byte" />
+          <Property Name="ticket_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="validate_start" Type="DateTime" Precision="3" />
+          <Property Name="validate_end" Type="DateTime" Precision="3" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="TS_CENTEREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="center_archives" EntityType="Self.center_archives" />
+          <EntitySet Name="center_archives_manual" EntityType="Self.center_archives_manual" />
+          <EntitySet Name="center_employee" EntityType="Self.center_employee" />
+          <EntitySet Name="center_lane" EntityType="Self.center_lane" />
+          <EntitySet Name="center_operation_error" EntityType="Self.center_operation_error" />
+          <EntitySet Name="center_plate" EntityType="Self.center_plate" />
+          <EntitySet Name="center_plate_Update_History" EntityType="Self.center_plate_Update_History" />
+          <EntitySet Name="center_review_history" EntityType="Self.center_review_history" />
+          <EntitySet Name="center_staff_error" EntityType="Self.center_staff_error" />
+          <EntitySet Name="center_station" EntityType="Self.center_station" />
+          <EntitySet Name="center_ticket_cancel" EntityType="Self.center_ticket_cancel" />
+          <EntitySet Name="center_ticket_delivery" EntityType="Self.center_ticket_delivery" />
+          <EntitySet Name="center_ticket_delivery_Copy" EntityType="Self.center_ticket_delivery_Copy" />
+          <EntitySet Name="center_ticket_prepay" EntityType="Self.center_ticket_prepay" />
+          <EntitySet Name="center_ticket_restore" EntityType="Self.center_ticket_restore" />
+          <EntitySet Name="center_ticket_serie" EntityType="Self.center_ticket_serie" />
+          <EntitySet Name="center_ticket_store" EntityType="Self.center_ticket_store" />
+          <EntitySet Name="center_ticket_type" EntityType="Self.center_ticket_type" />
+          <EntitySet Name="etc_archives" EntityType="Self.etc_archives" />
+          <EntitySet Name="ETCMarks" EntityType="Self.ETCMark" />
+          <EntitySet Name="station_log" EntityType="Self.station_log" />
+          <EntitySet Name="station_paramater" EntityType="Self.station_paramater" />
+          <EntitySet Name="station_session" EntityType="Self.station_session" />
+          <EntitySet Name="store_endofsession" EntityType="Self.store_endofsession" />
+          <EntitySet Name="store_endofsession_money" EntityType="Self.store_endofsession_money" />
+          <EntitySet Name="ticket_history" EntityType="Self.ticket_history" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TS_CENTERModelStoreContainer" CdmEntityContainer="TS_CENTEREntities">
+          <EntitySetMapping Name="center_archives">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_archives">
+              <MappingFragment StoreEntitySet="center_archives">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="station_id" ColumnName="station_id" />
+                <ScalarProperty Name="lance_id" ColumnName="lance_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+                <ScalarProperty Name="error_id" ColumnName="error_id" />
+                <ScalarProperty Name="lpn" ColumnName="lpn" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="barcode_type" ColumnName="barcode_type" />
+                <ScalarProperty Name="plateimage_filename" ColumnName="plateimage_filename" />
+                <ScalarProperty Name="fullimage_filename" ColumnName="fullimage_filename" />
+                <ScalarProperty Name="classify_type" ColumnName="classify_type" />
+                <ScalarProperty Name="ticket_value" ColumnName="ticket_value" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="start_boarding_time" ColumnName="start_boarding_time" />
+                <ScalarProperty Name="end_boarding_time" ColumnName="end_boarding_time" />
+                <ScalarProperty Name="loading_capacity" ColumnName="loading_capacity" />
+                <ScalarProperty Name="last_update_time" ColumnName="last_update_time" />
+                <ScalarProperty Name="last_update_userID" ColumnName="last_update_userID" />
+                <ScalarProperty Name="observer_id" ColumnName="observer_id" />
+                <ScalarProperty Name="history" ColumnName="history" />
+                <ScalarProperty Name="approved_id" ColumnName="approved_id" />
+                <ScalarProperty Name="checked" ColumnName="checked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_archives_manual">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_archives_manual">
+              <MappingFragment StoreEntitySet="center_archives_manual">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="lance_id" ColumnName="lance_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+                <ScalarProperty Name="start_boarding_time" ColumnName="start_boarding_time" />
+                <ScalarProperty Name="end_boarding_time" ColumnName="end_boarding_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_employee">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_employee">
+              <MappingFragment StoreEntitySet="center_employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uname" ColumnName="uname" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user_barcode" ColumnName="user_barcode" />
+                <ScalarProperty Name="image_text" ColumnName="image_text" />
+                <ScalarProperty Name="displayname" ColumnName="displayname" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="isCabin" ColumnName="isCabin" />
+                <ScalarProperty Name="isSupervisor" ColumnName="isSupervisor" />
+                <ScalarProperty Name="isAccountant" ColumnName="isAccountant" />
+                <ScalarProperty Name="isLeader" ColumnName="isLeader" />
+                <ScalarProperty Name="isElectric" ColumnName="isElectric" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isCashier" ColumnName="isCashier" />
+                <ScalarProperty Name="isLaneDivision" ColumnName="isLaneDivision" />
+                <ScalarProperty Name="isOfficeWork" ColumnName="isOfficeWork" />
+                <ScalarProperty Name="isDirector" ColumnName="isDirector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_lane">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_lane">
+              <MappingFragment StoreEntitySet="center_lane">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lane_name" ColumnName="lane_name" />
+                <ScalarProperty Name="lane_width" ColumnName="lane_width" />
+                <ScalarProperty Name="lane_height" ColumnName="lane_height" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_operation_error">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_operation_error">
+              <MappingFragment StoreEntitySet="center_operation_error">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="error_name" ColumnName="error_name" />
+                <ScalarProperty Name="descreption" ColumnName="descreption" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_plate">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_plate">
+              <MappingFragment StoreEntitySet="center_plate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lpn" ColumnName="lpn" />
+                <ScalarProperty Name="classify_type" ColumnName="classify_type" />
+                <ScalarProperty Name="ticket_value" ColumnName="ticket_value" />
+                <ScalarProperty Name="fullimage_filename" ColumnName="fullimage_filename" />
+                <ScalarProperty Name="plateimage_filename" ColumnName="plateimage_filename" />
+                <ScalarProperty Name="isPriority" ColumnName="isPriority" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="classify_profile" ColumnName="classify_profile" />
+                <ScalarProperty Name="owner" ColumnName="owner" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+                <ScalarProperty Name="registration_number" ColumnName="registration_number" />
+                <ScalarProperty Name="loading_capacity" ColumnName="loading_capacity" />
+                <ScalarProperty Name="seat_capacity" ColumnName="seat_capacity" />
+                <ScalarProperty Name="validity_start_date" ColumnName="validity_start_date" />
+                <ScalarProperty Name="validity_end_date" ColumnName="validity_end_date" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="is_violation" ColumnName="is_violation" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="is_display" ColumnName="is_display" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="approver_id" ColumnName="approver_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_plate_Update_History">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_plate_Update_History">
+              <MappingFragment StoreEntitySet="center_plate_Update_History">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lpn" ColumnName="lpn" />
+                <ScalarProperty Name="oldClassifyType" ColumnName="oldClassifyType" />
+                <ScalarProperty Name="newClassifyType" ColumnName="newClassifyType" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userFullName" ColumnName="userFullName" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_review_history">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_review_history">
+              <MappingFragment StoreEntitySet="center_review_history">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="center_archives_id" ColumnName="center_archives_id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="lpn" ColumnName="lpn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_staff_error">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_staff_error">
+              <MappingFragment StoreEntitySet="center_staff_error">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="error_name" ColumnName="error_name" />
+                <ScalarProperty Name="date_work" ColumnName="date_work" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+                <ScalarProperty Name="error_id" ColumnName="error_id" />
+                <ScalarProperty Name="penalty" ColumnName="penalty" />
+                <ScalarProperty Name="abundant" ColumnName="abundant" />
+                <ScalarProperty Name="center_archives_id" ColumnName="center_archives_id" />
+                <ScalarProperty Name="lpn" ColumnName="lpn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_station">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_station">
+              <MappingFragment StoreEntitySet="center_station">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="station_name" ColumnName="station_name" />
+                <ScalarProperty Name="barcode_prefix" ColumnName="barcode_prefix" />
+                <ScalarProperty Name="ticketone" ColumnName="ticketone" />
+                <ScalarProperty Name="ticketmonth" ColumnName="ticketmonth" />
+                <ScalarProperty Name="ticketquarter" ColumnName="ticketquarter" />
+                <ScalarProperty Name="ticketturnhighway" ColumnName="ticketturnhighway" />
+                <ScalarProperty Name="ticketprioritygroup" ColumnName="ticketprioritygroup" />
+                <ScalarProperty Name="ticketmember" ColumnName="ticketmember" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="hederReport" ColumnName="hederReport" />
+                <ScalarProperty Name="ticketnation" ColumnName="ticketnation" />
+                <ScalarProperty Name="ticketperiod" ColumnName="ticketperiod" />
+                <ScalarProperty Name="ticketprioritysingle" ColumnName="ticketprioritysingle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_ticket_cancel">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_ticket_cancel">
+              <MappingFragment StoreEntitySet="center_ticket_cancel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ticket_name" ColumnName="ticket_name" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="ticket_serie" ColumnName="ticket_serie" />
+                <ScalarProperty Name="start_number_serie" ColumnName="start_number_serie" />
+                <ScalarProperty Name="end_number_serie" ColumnName="end_number_serie" />
+                <ScalarProperty Name="date_cancel" ColumnName="date_cancel" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="from_staff_fullname" ColumnName="from_staff_fullname" />
+                <ScalarProperty Name="from_staff" ColumnName="from_staff" />
+                <ScalarProperty Name="cancel_user_fullname" ColumnName="cancel_user_fullname" />
+                <ScalarProperty Name="cancel_user" ColumnName="cancel_user" />
+                <ScalarProperty Name="reasons" ColumnName="reasons" />
+                <ScalarProperty Name="is_sales" ColumnName="is_sales" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="sell_time" ColumnName="sell_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_ticket_delivery">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_ticket_delivery">
+              <MappingFragment StoreEntitySet="center_ticket_delivery">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+                <ScalarProperty Name="deliveryer_name" ColumnName="deliveryer_name" />
+                <ScalarProperty Name="deliveryer" ColumnName="deliveryer" />
+                <ScalarProperty Name="receiver_name" ColumnName="receiver_name" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="ticket_name" ColumnName="ticket_name" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="startSerie" ColumnName="startSerie" />
+                <ScalarProperty Name="endSerie" ColumnName="endSerie" />
+                <ScalarProperty Name="ticketSerie" ColumnName="ticketSerie" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_ticket_delivery_Copy">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_ticket_delivery_Copy">
+              <MappingFragment StoreEntitySet="center_ticket_delivery_Copy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+                <ScalarProperty Name="deliveryer_name" ColumnName="deliveryer_name" />
+                <ScalarProperty Name="deliveryer" ColumnName="deliveryer" />
+                <ScalarProperty Name="receiver_name" ColumnName="receiver_name" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="ticket_name" ColumnName="ticket_name" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="startSerie" ColumnName="startSerie" />
+                <ScalarProperty Name="endSerie" ColumnName="endSerie" />
+                <ScalarProperty Name="ticketSerie" ColumnName="ticketSerie" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_ticket_prepay">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_ticket_prepay">
+              <MappingFragment StoreEntitySet="center_ticket_prepay">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lpn" ColumnName="lpn" />
+                <ScalarProperty Name="classify_type" ColumnName="classify_type" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="ticket_value" ColumnName="ticket_value" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="classify_owner" ColumnName="classify_owner" />
+                <ScalarProperty Name="validity_start_date" ColumnName="validity_start_date" />
+                <ScalarProperty Name="validity_end_date" ColumnName="validity_end_date" />
+                <ScalarProperty Name="accounting_staffid" ColumnName="accounting_staffid" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="update_history" ColumnName="update_history" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_ticket_restore">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_ticket_restore">
+              <MappingFragment StoreEntitySet="center_ticket_restore">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ticket_name" ColumnName="ticket_name" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="ticket_serie" ColumnName="ticket_serie" />
+                <ScalarProperty Name="start_number_serie" ColumnName="start_number_serie" />
+                <ScalarProperty Name="end_number_serie" ColumnName="end_number_serie" />
+                <ScalarProperty Name="date_store" ColumnName="date_store" />
+                <ScalarProperty Name="outForSale" ColumnName="outForSale" />
+                <ScalarProperty Name="date_out" ColumnName="date_out" />
+                <ScalarProperty Name="fromStaff" ColumnName="fromStaff" />
+                <ScalarProperty Name="fromStaff_fullname" ColumnName="fromStaff_fullname" />
+                <ScalarProperty Name="AccountantName" ColumnName="AccountantName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_ticket_serie">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_ticket_serie">
+              <MappingFragment StoreEntitySet="center_ticket_serie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="ticket_serie" ColumnName="ticket_serie" />
+                <ScalarProperty Name="start_number_serie" ColumnName="start_number_serie" />
+                <ScalarProperty Name="end_number_serie" ColumnName="end_number_serie" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_ticket_store">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_ticket_store">
+              <MappingFragment StoreEntitySet="center_ticket_store">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ticket_serie" ColumnName="ticket_serie" />
+                <ScalarProperty Name="ticket_name" ColumnName="ticket_name" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="start_number_serie" ColumnName="start_number_serie" />
+                <ScalarProperty Name="end_number_serie" ColumnName="end_number_serie" />
+                <ScalarProperty Name="date_store" ColumnName="date_store" />
+                <ScalarProperty Name="outForSale" ColumnName="outForSale" />
+                <ScalarProperty Name="date_out" ColumnName="date_out" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="book_number" ColumnName="book_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="center_ticket_type">
+            <EntityTypeMapping TypeName="TS_CENTERModel.center_ticket_type">
+              <MappingFragment StoreEntitySet="center_ticket_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ticket_name" ColumnName="ticket_name" />
+                <ScalarProperty Name="ticket_value" ColumnName="ticket_value" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="classify_type" ColumnName="classify_type" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="etc_archives">
+            <EntityTypeMapping TypeName="TS_CENTERModel.etc_archives">
+              <MappingFragment StoreEntitySet="etc_archives">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="station_id" ColumnName="station_id" />
+                <ScalarProperty Name="lane_id" ColumnName="lane_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="lpn" ColumnName="lpn" />
+                <ScalarProperty Name="plate_type" ColumnName="plate_type" />
+                <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+                <ScalarProperty Name="lpn_image" ColumnName="lpn_image" />
+                <ScalarProperty Name="overview_image" ColumnName="overview_image" />
+                <ScalarProperty Name="vehicle_type" ColumnName="vehicle_type" />
+                <ScalarProperty Name="ticket_value" ColumnName="ticket_value" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="start_boarding_time" ColumnName="start_boarding_time" />
+                <ScalarProperty Name="end_boarding_time" ColumnName="end_boarding_time" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="revised" ColumnName="revised" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ETCMarks">
+            <EntityTypeMapping TypeName="TS_CENTERModel.ETCMark">
+              <MappingFragment StoreEntitySet="ETCMark">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="etcArchivesId" ColumnName="etcArchivesId" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="lpn" ColumnName="lpn" />
+                <ScalarProperty Name="MTCVehicleType" ColumnName="MTCVehicleType" />
+                <ScalarProperty Name="ETCVehicleType" ColumnName="ETCVehicleType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="station_log">
+            <EntityTypeMapping TypeName="TS_CENTERModel.station_log">
+              <MappingFragment StoreEntitySet="station_log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="log_type" ColumnName="log_type" />
+                <ScalarProperty Name="log_name" ColumnName="log_name" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_user" ColumnName="created_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="station_paramater">
+            <EntityTypeMapping TypeName="TS_CENTERModel.station_paramater">
+              <MappingFragment StoreEntitySet="station_paramater">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="station_id" ColumnName="station_id" />
+                <ScalarProperty Name="lane_id" ColumnName="lane_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="session_current" ColumnName="session_current" />
+                <ScalarProperty Name="time_scan_status" ColumnName="time_scan_status" />
+                <ScalarProperty Name="com_plc" ColumnName="com_plc" />
+                <ScalarProperty Name="veconvis_use" ColumnName="veconvis_use" />
+                <ScalarProperty Name="camera_lpn_ip" ColumnName="camera_lpn_ip" />
+                <ScalarProperty Name="camera_lpn_port" ColumnName="camera_lpn_port" />
+                <ScalarProperty Name="veconvis_id" ColumnName="veconvis_id" />
+                <ScalarProperty Name="veconvis_laneid" ColumnName="veconvis_laneid" />
+                <ScalarProperty Name="veconvis_lane_index" ColumnName="veconvis_lane_index" />
+                <ScalarProperty Name="veconvis_lpn_index" ColumnName="veconvis_lpn_index" />
+                <ScalarProperty Name="veconvis_image_index" ColumnName="veconvis_image_index" />
+                <ScalarProperty Name="veconvis_lpn_path" ColumnName="veconvis_lpn_path" />
+                <ScalarProperty Name="server_lpn_path" ColumnName="server_lpn_path" />
+                <ScalarProperty Name="dictionary_lpn_path" ColumnName="dictionary_lpn_path" />
+                <ScalarProperty Name="camera_lane_use" ColumnName="camera_lane_use" />
+                <ScalarProperty Name="camera_lane_ip" ColumnName="camera_lane_ip" />
+                <ScalarProperty Name="camera_lane_port" ColumnName="camera_lane_port" />
+                <ScalarProperty Name="camera_lane_user" ColumnName="camera_lane_user" />
+                <ScalarProperty Name="camera_lane_pass" ColumnName="camera_lane_pass" />
+                <ScalarProperty Name="camera_lane_status" ColumnName="camera_lane_status" />
+                <ScalarProperty Name="server_lane_path" ColumnName="server_lane_path" />
+                <ScalarProperty Name="dictionary_lane_path" ColumnName="dictionary_lane_path" />
+                <ScalarProperty Name="board_mesage_ip" ColumnName="board_mesage_ip" />
+                <ScalarProperty Name="board_mesage_port" ColumnName="board_mesage_port" />
+                <ScalarProperty Name="board_mesage_user" ColumnName="board_mesage_user" />
+                <ScalarProperty Name="board_mesage_pass" ColumnName="board_mesage_pass" />
+                <ScalarProperty Name="etc_ip" ColumnName="etc_ip" />
+                <ScalarProperty Name="etc_user" ColumnName="etc_user" />
+                <ScalarProperty Name="etc_pass" ColumnName="etc_pass" />
+                <ScalarProperty Name="etc_port_command" ColumnName="etc_port_command" />
+                <ScalarProperty Name="etc_port_status" ColumnName="etc_port_status" />
+                <ScalarProperty Name="win_ip" ColumnName="win_ip" />
+                <ScalarProperty Name="win_led_ip" ColumnName="win_led_ip" />
+                <ScalarProperty Name="win_user" ColumnName="win_user" />
+                <ScalarProperty Name="win_pass" ColumnName="win_pass" />
+                <ScalarProperty Name="win_port" ColumnName="win_port" />
+                <ScalarProperty Name="wim_ip" ColumnName="wim_ip" />
+                <ScalarProperty Name="wim_port" ColumnName="wim_port" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="server_lpn_path_backup" ColumnName="server_lpn_path_backup" />
+                <ScalarProperty Name="server_lane_path_backup" ColumnName="server_lane_path_backup" />
+                <ScalarProperty Name="dictionary_lpn_path_backup" ColumnName="dictionary_lpn_path_backup" />
+                <ScalarProperty Name="dictionary_lane_path_backup" ColumnName="dictionary_lane_path_backup" />
+                <ScalarProperty Name="led_com_port" ColumnName="led_com_port" />
+                <ScalarProperty Name="server_user" ColumnName="server_user" />
+                <ScalarProperty Name="server_pass" ColumnName="server_pass" />
+                <ScalarProperty Name="server_drive" ColumnName="server_drive" />
+                <ScalarProperty Name="backup_server_user" ColumnName="backup_server_user" />
+                <ScalarProperty Name="backup_server_pass" ColumnName="backup_server_pass" />
+                <ScalarProperty Name="backup_server_drive" ColumnName="backup_server_drive" />
+                <ScalarProperty Name="recog_user" ColumnName="recog_user" />
+                <ScalarProperty Name="recog_pass" ColumnName="recog_pass" />
+                <ScalarProperty Name="recog_drive" ColumnName="recog_drive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="station_session">
+            <EntityTypeMapping TypeName="TS_CENTERModel.station_session">
+              <MappingFragment StoreEntitySet="station_session">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="session_name" ColumnName="session_name" />
+                <ScalarProperty Name="session_start_time" ColumnName="session_start_time" />
+                <ScalarProperty Name="session_end_time" ColumnName="session_end_time" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="session_order" ColumnName="session_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="store_endofsession">
+            <EntityTypeMapping TypeName="TS_CENTERModel.store_endofsession">
+              <MappingFragment StoreEntitySet="store_endofsession">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="staff" ColumnName="staff" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="quantity_before" ColumnName="quantity_before" />
+                <ScalarProperty Name="quantity_sale" ColumnName="quantity_sale" />
+                <ScalarProperty Name="quantity_after" ColumnName="quantity_after" />
+                <ScalarProperty Name="series_after" ColumnName="series_after" />
+                <ScalarProperty Name="date_work" ColumnName="date_work" />
+                <ScalarProperty Name="session_work" ColumnName="session_work" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="quantity_getin" ColumnName="quantity_getin" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="real_time" ColumnName="real_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="store_endofsession_money">
+            <EntityTypeMapping TypeName="TS_CENTERModel.store_endofsession_money">
+              <MappingFragment StoreEntitySet="store_endofsession_money">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="staff" ColumnName="staff" />
+                <ScalarProperty Name="money_before" ColumnName="money_before" />
+                <ScalarProperty Name="money_after" ColumnName="money_after" />
+                <ScalarProperty Name="date_work" ColumnName="date_work" />
+                <ScalarProperty Name="session_work" ColumnName="session_work" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ticket_history">
+            <EntityTypeMapping TypeName="TS_CENTERModel.ticket_history">
+              <MappingFragment StoreEntitySet="ticket_history">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ticket_name" ColumnName="ticket_name" />
+                <ScalarProperty Name="ticketID" ColumnName="ticketID" />
+                <ScalarProperty Name="ticket_type" ColumnName="ticket_type" />
+                <ScalarProperty Name="vehicle_type" ColumnName="vehicle_type" />
+                <ScalarProperty Name="ticket_value" ColumnName="ticket_value" />
+                <ScalarProperty Name="validate_start" ColumnName="validate_start" />
+                <ScalarProperty Name="validate_end" ColumnName="validate_end" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
